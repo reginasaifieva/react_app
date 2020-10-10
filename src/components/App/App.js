@@ -6,13 +6,16 @@ import styles from './App.module.css';
 const App = () => {
 	const items = [
 		{
-			value: 'Написать новое приложение'
+			value: 'Написать новое приложение',
+			isDone: true
 		},
 		{
-			value: 'прописать props-ы'
+			value: 'прописать props-ы',
+			isDone: true
 		},
 		{
-		value: 'распределить время по заданиям'
+		value: 'распределить время по заданиям',
+		isDone: false
 		}
 	];
 
