@@ -1,16 +1,12 @@
 import React from 'react';
 import Item from '../Item/Item';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import styles from './ItemList.module.css';
+import List from '@material-ui/core/List';
 
-const ItemList = ({items}) => (<div className={styles.list}>
+const ItemList = ({items, onClickDone}) => (<List className={styles.list}>
 	{items.map(item => (
-											<FormControlLabel
-            control={<Checkbox checked={item.isDone} />}
-            label={<Item value={item.value} isDone={item.isDone} />}         
-           />))}
-	</div>
+										<li key={item.value}><Item value={item.value} isDone={item.isDone}/></li>))}
+	</List>
 	);
 
 export default ItemList;
