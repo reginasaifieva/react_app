@@ -14,7 +14,7 @@ const stl = {
 	}
 }
 
-const Item = ({value, isDone, classes, onClickDone, id}) => (
+const Item = ({value, isDone, classes, onClickDone, id, onClickDelete}) => (
 	<ListItem fullWidth>
 	<Checkbox
 			checked={isDone}
@@ -25,8 +25,9 @@ const Item = ({value, isDone, classes, onClickDone, id}) => (
 		root: isDone && classes.done 
 	}} />
 	<ListItemSecondaryAction>
-			<IconButton aria-label="Comments">
-			<DeleteIcon/>
+			<IconButton aria-label="Delete" 
+			className={styles.list__delete}>
+			<DeleteIcon onClick={() => onClickDelete(id)}/>
 			</IconButton>
 	</ListItemSecondaryAction>
 </ListItem>);
