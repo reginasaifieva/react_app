@@ -3,9 +3,9 @@ import Item from '../Item/Item';
 import styles from './ItemList.module.css';
 import List from '@material-ui/core/List';
 
-const ItemList = ({items, onClickDone, onClickDelete}) => (<List className={styles.list}>
+const ItemList = ({items, onClickDone, onClickDelete, onClickAdd}) => (<List className={styles.list}>
 	{items.map(item => (
-										<li key={item.value}><Item value={item.value} isDone={item.isDone} id={item.id} onClickDone={onClickDone} onClickDelete={onClickDelete}/></li>))}
+										<li key={item.value}><Item value={item.value} isDone={item.isDone} id={item.id} onClickDone={onClickDone} onClickDelete={onClickDelete} onClickAdd={onClickAdd}/></li>))}
 	</List>
 	);
 
