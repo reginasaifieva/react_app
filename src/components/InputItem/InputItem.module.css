@@ -1,3 +1,7 @@
 .InputItem {
 	margin-bottom: 20px;
 }
+.AddButton {
+	width: 100px;
+	height: 100px;
+}

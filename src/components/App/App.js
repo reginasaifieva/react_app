@@ -12,20 +12,20 @@ class App extends React.Component {
 						{
 								value: 'Написать новое приложение',
 								isDone: true,
-								id: 1
+								id: 0
 						},
 						{
 								value: 'прописать props-ы',
 								isDone: true,
-								id: 2
+								id: 1
 						},
 						{
 								value: 'распределить время по заданиям',
 								isDone: false,
-								id: 3
+								id: 2
 						}
 				],
-				count: 6
+				count: 3
 		};
 
 		onClickDone = id => {
@@ -39,10 +39,24 @@ class App extends React.Component {
 			})
 			this.setState({items: newItemList});
 		};
-		 onClickDelete = id => {
-		const newItemList = this.state.items.filter(item => item.id !== id );
+
+	onClickDelete = id => {
+		const newItemList = this.state.items.filter(item => 
+			item.id !== id );
 		this.setState({ items: newItemList });
-	}
+	};
+
+	onClickAdd = value => this.setState( state => ({
+		items: [
+		...state.items,
+		{
+			value,
+			isDone: false,
+			id: state.count = 1
+		}
+		],
+		count: state.count = 1
+	}));
 
 	render () {
 		return (
@@ -50,7 +64,7 @@ class App extends React.Component {
 						<Card>
 							<CardContent>
 										<h1 className={styles.title}>Важные дела:</h1>
-										<InputItem/>
+										<InputItem type="text" value={this.state.value} onClickAdd={this.onClickAdd}/>
 										<ItemList items={this.state.items} onClickDone={this.onClickDone} onClickDelete={this.onClickDelete}/>
 										<Footer count={this.state.count}/>
 							</CardContent>
