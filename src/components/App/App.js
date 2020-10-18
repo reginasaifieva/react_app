@@ -12,17 +12,17 @@ class App extends React.Component {
 						{
 								value: 'Написать новое приложение',
 								isDone: true,
-								id: 0
+								id: 1
 						},
 						{
 								value: 'прописать props-ы',
 								isDone: true,
-								id: 1
+								id: 2
 						},
 						{
 								value: 'распределить время по заданиям',
 								isDone: false,
-								id: 2
+								id: 3
 						}
 				],
 				count: 3
@@ -52,10 +52,10 @@ class App extends React.Component {
 		{
 			value,
 			isDone: false,
-			id: state.count = 1
+			id: state.count +1 
 		}
 		],
-		count: state.count = 1
+		count: state.count +1
 	}));
 
 	render () {
