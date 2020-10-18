@@ -8,13 +8,17 @@ class InputItem extends React.Component {
         inputValue: ''
     };
     onButtonClick = (inputValue) => {
-        if (this.state.inputValue !== '') {
-            this.setState({
+        try {
+           if (this.state.inputValue !== '') {this.setState({
                 inputValue: ''
             })
-            this.props.onClickAdd(this.state.inputValue)
-        } else {
-            alert('Заполните поле задания')
+            this.props.onClickAdd(this.state.inputValue.toUpperCase())}
+            else {
+                alert('Поле пустое')
+            }
+        }
+        catch(e) {
+            alert('Ошибка ' + e.name + ":" + e.message + "\n" + e.stack);
         }
     }
     render() {
