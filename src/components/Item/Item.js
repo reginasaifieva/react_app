@@ -15,24 +15,38 @@ const stl = {
 		textDecoration: 'line-through'
 	}
 }
+class Item extends React.Component {
+	componentDidMount() {
+		console.log('componentDidMount');
+	}
+	componentDidUpdate() {
+		console.log('compomentDidUpdate');
+	}
+	componentWillUnmount() {
+		console.log('componentWillUnmount');
+	}
+	render() {
+		const {value, isDone, classes, onClickDone, id, onClickDelete} = this.props;
+		return (
+				<ListItem fullWidth>
+						<Checkbox
+								checked={isDone}
+								tabIndex={-1}
+								onClick={() => onClickDone(id)}
+						/>
+						<ListItemText primary={value} classes={{
+								root: isDone && classes.done 
+						}} />
+						<ListItemSecondaryAction>
+								<IconButton aria-label="Delete" 
+								className={styles.list__delete}>
+										<DeleteIcon onClick={() => onClickDelete(id)}/>
+								</IconButton>
+						</ListItemSecondaryAction>
+				</ListItem>);
+	} 
+}
 
-const Item = ({value, isDone, classes, onClickDone, id, onClickDelete}) => (
-	<ListItem fullWidth>
-	<Checkbox
-			checked={isDone}
-			tabIndex={-1}
-			onClick={() => onClickDone(id)}
-	/>
-	<ListItemText primary={value} classes={{
-		root: isDone && classes.done 
-	}} />
-	<ListItemSecondaryAction>
-			<IconButton aria-label="Delete" 
-			className={styles.list__delete}>
-			<DeleteIcon onClick={() => onClickDelete(id)}/>
-			</IconButton>
-	</ListItemSecondaryAction>
-</ListItem>);
 
 Checkbox.defaultProps = {
   isDone: false
