@@ -7,6 +7,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+
 
 const stl = {
 	done: {
@@ -35,5 +37,11 @@ const Item = ({value, isDone, classes, onClickDone, id, onClickDelete}) => (
 Checkbox.defaultProps = {
   isDone: false
 };
-
+Item.propTypes = {
+  isDone:  PropTypes.bool,
+  value: PropTypes.string.isRequired,
+  onClickDone: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
+};
 export default withStyles(stl)(Item);
