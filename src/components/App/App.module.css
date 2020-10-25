@@ -1,9 +1,12 @@
 .wrap { 
-	display: block;
-	margin: auto; 
-	width: 300px;
 	font-family: Tahoma;
+ min-width: 320px;
+ max-width: 650px;
+ margin: 0 auto;
 }
 .title {
 		font-family: Arial;
+}
+.sidebar {
+	grid-area: sidebar;
 }
