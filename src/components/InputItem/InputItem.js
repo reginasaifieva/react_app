@@ -7,7 +7,7 @@ class InputItem extends React.Component {
     state = {
         inputValue: ''
     };
-    onButtonClick = (inputValue) => {
+    onButtonClick = () => {
         try {
            if (this.state.inputValue !== '') {this.setState({
                 inputValue: ''
@@ -41,6 +41,7 @@ class InputItem extends React.Component {
         onClick={this.onButtonClick}>Добавить
     </Button>
     </div>) 
-    }
 }
+}
+
 export default InputItem;

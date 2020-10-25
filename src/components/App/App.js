@@ -1,77 +1,71 @@
-import React from 'react';
-import ItemList from '../ItemList/ItemList';
-import InputItem from '../InputItem/InputItem';
-import Footer from '../Footer/Footer';
+import React, { useState, useEffect } from "react";
+import ItemList from "../ItemList/ItemList";
+import InputItem from "../InputItem/InputItem";
+import Footer from "../Footer/Footer";
 import styles from './App.module.css';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 
-class App extends React.Component {
-		state = {
-				items: [
-						{
-								value: 'Написать новое приложение',
-								isDone: true,
-								id: 1
-						},
-						{
-								value: 'прописать props-ы',
-								isDone: true,
-								id: 2
-						},
-						{
-								value: 'распределить время по заданиям',
-								isDone: false,
-								id: 3
-						}
-				],
-				count: 3
-		};
+const App = () => {
+    const initialState = {
+        items: [
+            {
+                value: 'сделать react-приложение',
+                isDone: false,
+                id: null
+            }
+        ]
+    };
 
-		onClickDone = id => {
-			const newItemList = this.state.items.map(item => {
-				const newItem = {...item};
+useEffect(() => {
+    console.log('componentDidMount');
+}, []);
 
-				if (item.id === id) {
-					newItem.isDone = !item.isDone;
-				}
-				return newItem;
-			})
-			this.setState({items: newItemList});
-		};
+useEffect(() => {
+    console.log('componentDidUpdate');
+});
 
-	onClickDelete = id => {
-		const newItemList = this.state.items.filter(item => 
-			item.id !== id );
-		this.setState({ items: newItemList });
-	};
+const [items, setItems] = useState(initialState.items);
 
-	onClickAdd = value => this.setState( state => ({
-		items: [
-		...state.items,
-		{
-			value,
-			isDone: false,
-			id: state.count +1 
-		}
-		],
-		count: state.count +1
-	}));
 
-	render () {
-		return (
-					<div className={styles.wrap}>
-						<Card>
-							<CardContent>
-										<h1 className={styles.title}>Важные дела:</h1>
-										<InputItem type="text" value={this.state.value} onClickAdd={this.onClickAdd}/>
-										<ItemList items={this.state.items} onClickDone={this.onClickDone} onClickDelete={this.onClickDelete}/>
-										<Footer/>
-							</CardContent>
-						</Card>
-				</div>
-				)
-		}
-}
+const onClickDone = id => {
+    const newItemList = items.map(item => {
+        const newItem = { ...item };
+        if (item.id === id) {
+            newItem.isDone = !item.isDone;
+        }
+
+        return newItem;
+    });
+
+    setItems(newItemList);
+};
+
+const onClickDelete = id => {
+    const newItemList = items.filter(item => item.id !== id);
+
+    setItems(newItemList);
+};
+
+const onClickAdd = value => {
+    const newItemList = [
+        ...items,
+        {
+            value,
+            isDone: false,
+            id: items.length + 1
+        }
+    ];
+    setItems(newItemList);
+  
+};
+
+return (
+    <div className={styles.wrap}>
+        <h1 className={styles.title}>Важные задачи:</h1>
+        <InputItem onClickAdd={onClickAdd} />
+        <ItemList items={items}  onClickDone={onClickDone} onClickDelete={onClickDelete}/>
+        <Footer count={items.length} />
+    </div>
+    );
+};
 
 export default App;
