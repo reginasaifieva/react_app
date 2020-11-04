@@ -34,9 +34,6 @@ const Item = ({value, isDone, classes, onClickDone, id, onClickDelete}) => (
 	</ListItemSecondaryAction>
 </ListItem>);
 
-Checkbox.defaultProps = {
-  isDone: false
-};
 Item.propTypes = {
   isDone:  PropTypes.bool,
   value: PropTypes.string.isRequired,

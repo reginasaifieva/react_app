@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 
 const Footer = ({count}) => (<div className={styles.footer}>Осталось выполнить вот столько дел:{count}</div>);
 
-Footer.defaultProps = {
-    count: 0
-};
+
 Footer.propTypes = {
     count: PropTypes.number.isRequired
 };
