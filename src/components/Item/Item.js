@@ -1,37 +1,59 @@
 import React from 'react';
+import styles from './Item.module.css';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import styles from './Item.module.css';
-import classnames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-class Item extends React.Component {
-  render() {
-    const { value, isDone, id, onClickDone, onClickDelete } = this.props;
 
-    return (<div className={styles.wrap}>
-      <Checkbox
-        color="default"
-        checked={isDone}
-        onClick={() => onClickDone(id)}
-      />
-      <div className={
-        classnames({
-          [styles.item]: true,
-          [styles.done]: isDone
-        })}> 
-      {value}
-      </div>
-      <IconButton
-        aria-label="delete"
-      >
-        <DeleteIcon
-          onClick={() => onClickDelete(id)}
-        />
-      </IconButton>
-    </div>)
+const stl = {
+  done: {
+    textDecoration: 'line-through'
   }
+}
+class Item extends React.Component {
+  componentDidMount() {
+    this.timerID = setInterval(() => console.log('interval'), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+  render() {
+    const {value, isDone, classes, onClickDone, id, onClickDelete} = this.props;
+    return (
+        <ListItem fullWidth>
+            <Checkbox
+                checked={isDone}
+                tabIndex={-1}
+                onClick={() => onClickDone(id)}
+            />
+            <ListItemText primary={value} classes={{
+                root: isDone && classes.done 
+            }} />
+            <ListItemSecondaryAction>
+                <IconButton aria-label="Delete" 
+                className={styles.list__delete}>
+                    <DeleteIcon onClick={() => onClickDelete(id)}/>
+                </IconButton>
+            </ListItemSecondaryAction>
+        </ListItem>);
+  } 
+}
+
+
+Checkbox.defaultProps = {
+  isDone: false
+};
+Item.propTypes = {
+  isDone:  PropTypes.bool,
+  value: PropTypes.string.isRequired,
+  onClickDone: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
 };
 
-export default Item;
+export default withStyles(stl)(Item);
