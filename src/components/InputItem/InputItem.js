@@ -1,47 +1,64 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField'; 
 import styles from './InputItem.module.css';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 class InputItem extends React.Component {
-    state = {
-        inputValue: ''
-    };
-    onButtonClick = () => {
-        try {
-           if (this.state.inputValue !== '') {this.setState({
-                inputValue: ''
-            })
-            this.props.onClickAdd(this.state.inputValue.toUpperCase())}
-            else {
-                alert('Поле пустое')
-            }
-        }
-        catch(e) {
-            alert('Ошибка ' + e.name + ":" + e.message + "\n" + e.stack);
-        }
+  state = {
+    inputValue: '',
+    error: false,
+    errorMessage: '',
+    items: []
+  };
+
+  onButtonClick = () => {
+    if (this.state.inputValue !== '') {
+      if (this.props.items.find((item) => this.state.inputValue === item.value)) {
+        this.setState({
+          error: true,
+          errorMessage: 'Что-то пошло не так...'
+        });
+      } else {
+        this.setState({
+          inputValue: '',
+          error: false,
+          errorMessage: ''
+        });
+        this.props.onClickAdd(this.state.inputValue);
+      }
+    } else {
+      this.setState({
+        error: true,
+        errorMessage: 'Что-то пошло не так...'
+      });
     }
-    render() {
-        const {onClickAdd} = this.props;
-        return (
-        <div className={styles.InputItem}>
-            <TextField
-              id="standard-string"
-              label="Введите новое дело"
-              type="string"
-              style={{ margin: 5 }}
-              fullWidth
-              value={this.state.inputValue}
-              onChange={event => this.setState({ inputValue: event.target.value })}
-    />
-    <Button
-        variant="contained" 
-        color="primary"
-        fullWidth
-        onClick={this.onButtonClick}>Добавить
-    </Button>
-    </div>) 
-}
+  }
+
+  render () {
+    return (<div className={styles.container}>
+        <div className={styles.input}>
+          <TextField
+            helperText={this.state.errorMessage}
+            label="Задача"
+            defaultValue="Добавить задачу"
+            helperText="Введите задачу для списка дел"
+            margin="dense"
+            variant="outlined"
+            value={this.state.inputValue}
+            error={this.state.error}
+            onChange={(event) => this.setState({ inputValue: event.target.value })}
+          />
+        </div>
+        <div className={styles.button_wrap}>
+          <Button
+            size="large"
+            onClick={this.onButtonClick}
+          >
+            Добавить
+          </Button>
+        </div>
+    </div>);
+  }
 }
 
 export default InputItem;

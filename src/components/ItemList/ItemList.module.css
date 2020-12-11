@@ -1,4 +1,7 @@
 .list {
-	padding-left: 20px;
-	padding-bottom: 30px;
+  list-style-type: none;
+}
+
+.li {
+  padding-top: 15px;
 }

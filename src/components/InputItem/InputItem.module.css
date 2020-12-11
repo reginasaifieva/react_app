@@ -1,7 +1,8 @@
-.InputItem {
-	margin-bottom: 20px;
+.container {
+  text-align: center;
 }
-.AddButton {
-	width: 100px;
-	height: 100px;
+.button_wrap  {
+	 background-color: #0808;
+	 width: 100px;
+	 margin: auto;
 }
