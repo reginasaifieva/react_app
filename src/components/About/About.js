@@ -66,9 +66,9 @@ class About extends React.Component {
             </div>
             <div className={styles.points}>
               <p className={styles.description}>Меня зовут Регина</p>
-              <p className={styles.indification}>GitHub ID: {user.id}</p>
-              <p className={styles.login}>GitHub login: {user.login}</p>
-              <p className={styles.url}>GitHub url: <a href={user.html_url}>{user.html_url}</a></p>
+              <p className={styles.indification}>Описание: {user.bio}</p>
+              <p className={styles.login}>Login: {user.login}</p>
+              <p className={styles.url}>Ссылка на GitHub: <a href={user.html_url}>{user.html_url}</a></p>
             </div>
           </div>
           <div className={styles.repo}>
