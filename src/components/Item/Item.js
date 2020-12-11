@@ -24,7 +24,6 @@ class Item extends React.Component {
       {value}
       </div>
       <IconButton
-        className={styles.button}
         aria-label="delete"
       >
         <DeleteIcon
