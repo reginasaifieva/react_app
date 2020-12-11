@@ -18,7 +18,7 @@ class Item extends React.Component {
       />
       <div className={
         classnames({
-          // [styles.item]: true,
+          [styles.item]: true,
           [styles.done]: isDone
         })}> 
       {value}

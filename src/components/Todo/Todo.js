@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import InputItem from '../InputItem/InputItem';
 import ItemList from '../ItemList/ItemList';
+import Item from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 import styles from './Todo.module.css';
 
