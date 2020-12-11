@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Item.module.css';
+import styles from './item.module.css';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
