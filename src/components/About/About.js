@@ -65,7 +65,7 @@ class About extends React.Component {
               <img src={user.avatar_url} alt='Avatar' className={styles.avatar} />
             </div>
             <div className={styles.points}>
-              <p className={styles.description}>Меня зовут Регина</p>
+              <p className={styles.description}>Меня зовут Регина Сайфиева</p>
               <p className={styles.indification}>Описание: {user.bio}</p>
               <p className={styles.login}>Login: {user.login}</p>
               <p className={styles.url}>Ссылка на GitHub: <a href={user.html_url}>{user.html_url}</a></p>
