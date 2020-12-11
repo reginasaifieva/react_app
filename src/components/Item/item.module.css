@@ -1,6 +1,13 @@
-.item {
-	color: #333;
+.wrap {
+  display: flex;
 }
+
+.item {
+  padding-top: 15px;
+  color: #333;
+}
+
 .done {
-	text-decoration: line-through;
+  color: #992959;
+  text-decoration: line-through;
 }

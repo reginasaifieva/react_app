@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 
 
 const ItemList = ({items, onClickDone, onClickDelete, onClickAdd}) => (<List className={styles.list}>
-	{items.map(item => (
-										<li key={item.value}><Item value={item.value} isDone={item.isDone} id={item.id} onClickDone={onClickDone} onClickDelete={onClickDelete} onClickAdd={onClickAdd}/></li>))}
-	</List>
-	);
+  {items.map(item => (
+                    <li key={item.value}><Item value={item.value} isDone={item.isDone} id={item.id} onClickDone={onClickDone} onClickDelete={onClickDelete} onClickAdd={onClickAdd}/></li>))}
+  </List>
+  );
 ItemList.propTypes = {
   isDone:  PropTypes.bool,
   value: PropTypes.string.isRequired,

@@ -11,37 +11,37 @@ import PropTypes from 'prop-types';
 
 
 const stl = {
-	done: {
-		textDecoration: 'line-through'
-	}
+  done: {
+    textDecoration: 'line-through'
+  }
 }
 class Item extends React.Component {
-	componentDidMount() {
-		this.timerID = setInterval(() => console.log('interval'), 1000);
-	}
-	componentWillUnmount() {
-		clearInterval(this.timerID);
-	}
-	render() {
-		const {value, isDone, classes, onClickDone, id, onClickDelete} = this.props;
-		return (
-				<ListItem fullWidth>
-						<Checkbox
-								checked={isDone}
-								tabIndex={-1}
-								onClick={() => onClickDone(id)}
-						/>
-						<ListItemText primary={value} classes={{
-								root: isDone && classes.done 
-						}} />
-						<ListItemSecondaryAction>
-								<IconButton aria-label="Delete" 
-								className={styles.list__delete}>
-										<DeleteIcon onClick={() => onClickDelete(id)}/>
-								</IconButton>
-						</ListItemSecondaryAction>
-				</ListItem>);
-	} 
+  componentDidMount() {
+    this.timerID = setInterval(() => console.log('interval'), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+  render() {
+    const {value, isDone, classes, onClickDone, id, onClickDelete} = this.props;
+    return (
+        <ListItem fullWidth>
+            <Checkbox
+                checked={isDone}
+                tabIndex={-1}
+                onClick={() => onClickDone(id)}
+            />
+            <ListItemText primary={value} classes={{
+                root: isDone && classes.done 
+            }} />
+            <ListItemSecondaryAction>
+                <IconButton aria-label="Delete" 
+                className={styles.list__delete}>
+                    <DeleteIcon onClick={() => onClickDelete(id)}/>
+                </IconButton>
+            </ListItemSecondaryAction>
+        </ListItem>);
+  } 
 }
 
 
@@ -55,4 +55,5 @@ Item.propTypes = {
   onClickDelete: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired
 };
+
 export default withStyles(stl)(Item);

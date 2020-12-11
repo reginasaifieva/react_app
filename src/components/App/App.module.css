@@ -1,12 +1,108 @@
-.wrap { 
-	font-family: Tahoma;
- min-width: 320px;
- max-width: 650px;
- margin: 0 auto;
+body {
+  margin: 0;
 }
-.title {
-		font-family: Arial;
+
+.container {
+  margin: auto;
+  width: 80%;
 }
-.sidebar {
-	grid-area: sidebar;
+
+.menu {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  margin-right: 50px;
+}
+
+.link:after {
+  position: absolute;
+  left: 0;
+  display: block;
+  content: '';
+  width: 0;
+  height: 3px;
+  background: #b5c7b8;
+  opacity: 0;
+  transition: opacity .5s, width .5s;
+}
+
+.link:hover:after {
+  color: red;
+  width: 100%;
+}
+
+.link:hover:after {
+  position: absolute;
+  left: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: #b5c7b8;
+}
+
+.link:last-child {
+  margin-right: 0;
+}
+
+.item {
+  font: 43px/51px Arial, sans-serif;
+  transition: .5s ease;
+}
+
+.item:hover {
+  opacity: .5;
+}
+
+.footer {
+  margin: auto;
+  text-align: center;
+  margin-top: 10px;
+  width: 30%;
+  border-radius: 10px;
+  background-color: #808080;
+}
+
+.text {
+  font: 25px/25px Arial, sans-serif;
+}
+
+
+@media (max-width: 725px) {
+  .text {
+    font: 22px/22px Arial, sans-serif;
+  }
+
+  .links {
+    margin-right: 30px;
+  }
+
+  .item {
+    font: 38px/48px Arial, sans-serif;
+  }
+}
+
+@media (max-width: 642px) {
+  .text {
+    font: 21px/21px Arial, sans-serif;
+  }
+  .item {
+    font: 35px/30px Arial, sans-serif;
+  }
+}
+
+@media (max-width: 562px) {
+  .links {
+    margin-right: 20px;
+  }
+  .item {
+    font: 25px/20px Arial, sans-serif;
+  }
 }
