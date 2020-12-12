@@ -8,7 +8,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 const Footer = ({ count, onClickFilter, filter, onClickDeleteComplited }) => {
 
   return (<div className={styles.footer}>
-    <span className={styles.item}>{count} дел всего в работе</span>
+    <span className={styles.item}>{count} дел всего</span>
     <div className={styles.item}>
       <ButtonGroup 
         className={styles.buttons}
