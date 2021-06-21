@@ -16,7 +16,7 @@ class About extends React.Component {
 
   componentDidMount() {
     octokit.repos.listForUser({
-      username: 'saifieva98'
+      username: 'reginasaifieva'
     }).then(({ data }) => {
       this.setState({
         repoList: data,
@@ -29,7 +29,7 @@ class About extends React.Component {
     })));
 
     octokit.users.getByUsername({
-      username: 'saifieva98'
+      username: 'reginasaifieva'
     }).then(({ data }) => {
       this.setState({
         user: data,

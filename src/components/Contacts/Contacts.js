@@ -18,7 +18,7 @@ const Contacts = () => (<div className={styles.container}>
     </div>
     <div className={styles.item}>
       <label className={styles.label}>E-mail:</label>
-      <a className={styles.link} href='mailto:saifieva98@gmail.com'>saifieva98@gmail.com</a>
+      <a className={styles.link} href='mailto:saifieva98@gmail.com'>regina-saifieva@mail.ru</a>
     </div>
   </div>
 </div>)
